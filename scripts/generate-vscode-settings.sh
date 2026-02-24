@@ -64,6 +64,14 @@ if [ -d "$HUB_PATH/instructions" ]; then
     instruction_locations+=("$(to_tilde_path "$HUB_PATH/instructions")")
 fi
 
+# Third-party instruction directories
+for submodule_dir in "$HUB_PATH"/third-party/*/; do
+    [ -d "$submodule_dir" ] || continue
+    if [ -d "${submodule_dir}instructions" ]; then
+        instruction_locations+=("$(to_tilde_path "${submodule_dir}instructions")")
+    fi
+done
+
 # Generate JSON
 echo ""
 echo -e "${CYAN}Add the following to your VS Code settings.json:${NC}"
