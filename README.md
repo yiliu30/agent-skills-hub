@@ -2,11 +2,15 @@
 
 > **Vibe-coding project** — this repo was entirely scaffolded, structured, and shipped through AI-assisted conversation. From planning the architecture to writing scripts, CI, and docs — all done in one vibe-coding session. 🎶
 
-A curated collection of agent skills from popular open-source repositories plus custom skills — all in one place.
+A curated collection of agent skills and instruction files from popular open-source repositories plus custom additions — all in one place.
 
 ## What are Agent Skills?
 
 Skills are folders of instructions, scripts, and resources that AI coding agents load dynamically to improve performance on specialized tasks. Each skill contains a `SKILL.md` file following the [Agent Skills specification](http://agentskills.io).
+
+## What are Instruction Files?
+
+Instruction files (`.instructions.md`) are lightweight directives that guide agent behavior without the full skill folder structure. They use frontmatter (`description`, `applyTo`) to tell the agent when and how to apply the instructions. VS Code discovers them via `chat.instructionsFilesLocations`.
 
 ## Repository Structure
 
@@ -18,6 +22,8 @@ agent-skills-hub/
 │   └── awesome-copilot/          # github.com/github/awesome-copilot
 ├── custom/                       # your own skills
 │   └── example-skill/
+├── instructions/                 # instruction files (.instructions.md)
+│   └── gcorrect.instructions.md
 ├── scripts/
 │   ├── build-catalog.py          # generates catalog.json
 │   ├── install-skill.sh          # installs a skill locally
@@ -67,7 +73,7 @@ make help       # show all commands
 
 ### Configure VS Code
 
-Generate the `chat.agentSkillsLocations` setting so VS Code discovers all skills automatically:
+Generate the `chat.agentSkillsLocations` and `chat.instructionsFilesLocations` settings so VS Code discovers all skills and instructions automatically:
 
 ```bash
 make settings
@@ -76,11 +82,14 @@ make settings
 Then copy the output into your VS Code `settings.json` (user or workspace):
 
 ```jsonc
-"chat.agentSkillsLocations": [
-    "~/workspace/agent-skills-hub/custom",
-    "~/workspace/agent-skills-hub/third-party/anthropic-skills/skills",
-    "~/workspace/agent-skills-hub/third-party/awesome-copilot/skills"
-]
+"chat.agentSkillsLocations": {
+    "~/workspace/agent-skills-hub/custom": true,
+    "~/workspace/agent-skills-hub/third-party/anthropic-skills/skills": true,
+    "~/workspace/agent-skills-hub/third-party/awesome-copilot/skills": true
+},
+"chat.instructionsFilesLocations": {
+    "~/workspace/agent-skills-hub/instructions": true
+}
 ```
 
 ### Update third-party skills
@@ -116,6 +125,21 @@ make install SKILL=git-commit TARGET=~/.config/skills/
 4. Commit and push
 
 See the [skill template](custom/example-skill/SKILL.md) for the expected format.
+
+## Adding Instruction Files
+
+1. Create a new `.instructions.md` file under `instructions/`:
+   ```bash
+   cat > instructions/my-instruction.instructions.md << 'EOF'
+   ---
+   description: A short description of what this instruction does.
+   applyTo: 'When this instruction should be applied.'
+   ---
+   Your instruction content here.
+   EOF
+   ```
+2. Run `make settings` to verify the `instructions/` path is included
+3. Commit and push
 
 ## Adding More Third-Party Sources
 
