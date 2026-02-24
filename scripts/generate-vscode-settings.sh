@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Generate VS Code settings snippet for chat.agentSkillsLocations.
-# Scans the hub for all skill directories and outputs JSON ready to paste into settings.json.
+# Generate VS Code settings snippet for chat.agentSkillsLocations and
+# chat.instructionsFilesLocations.
+# Scans the hub for all skill and instruction directories and outputs JSON
+# ready to paste into settings.json.
 #
 # Usage:
 #   ./scripts/generate-vscode-settings.sh
@@ -22,7 +24,8 @@ while [[ $# -gt 0 ]]; do
         --hub-path) HUB_PATH="$2"; shift 2 ;;
         -h|--help)
             echo "Usage: $0 [--hub-path <path>]"
-            echo "  Generates VS Code chat.agentSkillsLocations settings snippet."
+            echo "  Generates VS Code chat.agentSkillsLocations and"
+            echo "  chat.instructionsFilesLocations settings snippet."
             echo "  --hub-path  Path to agent-skills-hub repo (default: auto-detected)"
             exit 0
             ;;
@@ -36,11 +39,11 @@ to_tilde_path() {
 }
 
 # Collect all skill directories (folders that directly contain SKILL.md files)
-locations=()
+skill_locations=()
 
 # Custom skills: point to custom/ so all subdirs are discovered
 if [ -d "$HUB_PATH/custom" ]; then
-    locations+=("$(to_tilde_path "$HUB_PATH/custom")")
+    skill_locations+=("$(to_tilde_path "$HUB_PATH/custom")")
 fi
 
 # Third-party: find the parent directory that contains skill subdirectories
@@ -48,30 +51,50 @@ for submodule_dir in "$HUB_PATH"/third-party/*/; do
     [ -d "$submodule_dir" ] || continue
     # Look for a skills/ subdirectory (common pattern)
     if [ -d "${submodule_dir}skills" ]; then
-        locations+=("$(to_tilde_path "${submodule_dir}skills")")
+        skill_locations+=("$(to_tilde_path "${submodule_dir}skills")")
     else
         # Fallback: point to the submodule root if skills are at top level
-        locations+=("$(to_tilde_path "$submodule_dir")")
+        skill_locations+=("$(to_tilde_path "$submodule_dir")")
     fi
 done
+
+# Collect instruction directories
+instruction_locations=()
+if [ -d "$HUB_PATH/instructions" ]; then
+    instruction_locations+=("$(to_tilde_path "$HUB_PATH/instructions")")
+fi
 
 # Generate JSON
 echo ""
 echo -e "${CYAN}Add the following to your VS Code settings.json:${NC}"
 echo ""
 echo -e "${GREEN}// --- agent-skills-hub: skill search paths ---${NC}"
-echo '"chat.agentSkillsLocations": ['
+echo '"chat.agentSkillsLocations": {'
 
-last_idx=$(( ${#locations[@]} - 1 ))
-for i in "${!locations[@]}"; do
+last_idx=$(( ${#skill_locations[@]} - 1 ))
+for i in "${!skill_locations[@]}"; do
     if [ "$i" -eq "$last_idx" ]; then
-        echo "    \"${locations[$i]}\""
+        echo "    \"${skill_locations[$i]}\": true"
     else
-        echo "    \"${locations[$i]}\","
+        echo "    \"${skill_locations[$i]}\": true,"
     fi
 done
 
-echo ']'
+echo '},'
+
+echo -e "${GREEN}// --- agent-skills-hub: instruction file paths ---${NC}"
+echo '"chat.instructionsFilesLocations": {'
+
+last_idx=$(( ${#instruction_locations[@]} - 1 ))
+for i in "${!instruction_locations[@]}"; do
+    if [ "$i" -eq "$last_idx" ]; then
+        echo "    \"${instruction_locations[$i]}\": true"
+    else
+        echo "    \"${instruction_locations[$i]}\": true,"
+    fi
+done
+
+echo '}'
 echo ""
 echo -e "${CYAN}Tip: Place this inside the top-level {} of your settings.json file.${NC}"
 echo -e "${CYAN}     User settings:  Ctrl+Shift+P → 'Preferences: Open User Settings (JSON)'${NC}"
