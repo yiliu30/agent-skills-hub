@@ -1,0 +1,6 @@
+[submodule "third-party/anthropic-skills"]
+	path = third-party/anthropic-skills
+	url = https://github.com/anthropics/skills.git
+[submodule "third-party/awesome-copilot"]
+	path = third-party/awesome-copilot
+	url = https://github.com/github/awesome-copilot.git
