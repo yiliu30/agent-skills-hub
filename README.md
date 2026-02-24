@@ -1,5 +1,7 @@
 # 🧠 Agent Skills Hub
 
+> **Vibe-coding project** — this repo was entirely scaffolded, structured, and shipped through AI-assisted conversation. From planning the architecture to writing scripts, CI, and docs — all done in one vibe-coding session. 🎶
+
 A curated collection of agent skills from popular open-source repositories plus custom skills — all in one place.
 
 ## What are Agent Skills?
