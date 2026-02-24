@@ -10,6 +10,7 @@ Skills are folders of instructions, scripts, and resources that AI coding agents
 
 ```
 agent-skills-hub/
+├── Makefile                      # common commands (make help)
 ├── third-party/                  # git submodules (upstream repos)
 │   ├── anthropic-skills/         # github.com/anthropics/skills
 │   └── awesome-copilot/          # github.com/github/awesome-copilot
@@ -17,7 +18,8 @@ agent-skills-hub/
 │   └── example-skill/
 ├── scripts/
 │   ├── build-catalog.py          # generates catalog.json
-│   └── install-skill.sh          # installs a skill locally
+│   ├── install-skill.sh          # installs a skill locally
+│   └── generate-vscode-settings.sh  # generates VS Code settings snippet
 ├── catalog.json                  # auto-generated unified skill index
 └── .github/workflows/            # CI to rebuild catalog
 ```
@@ -44,27 +46,58 @@ If you already cloned without `--recurse-submodules`:
 git submodule update --init --recursive
 ```
 
-### Update third-party skills to latest
+### Available commands
+
+All common operations are available via `make`:
 
 ```bash
-git submodule update --remote --merge
+make help       # show all commands
 ```
 
-### Browse all skills
+| Command | Description |
+|---------|-------------|
+| `make update` | Pull latest from third-party submodules |
+| `make settings` | Generate VS Code `chat.agentSkillsLocations` snippet |
+| `make catalog` | Rebuild `catalog.json` from all skill sources |
+| `make refresh` | Update submodules + rebuild catalog in one step |
+| `make list` | List all available skills |
+| `make install SKILL=<name> TARGET=<dir>` | Install a skill to a target directory |
+
+### Configure VS Code
+
+Generate the `chat.agentSkillsLocations` setting so VS Code discovers all skills automatically:
 
 ```bash
-python scripts/build-catalog.py
-cat catalog.json | python -m json.tool
+make settings
 ```
 
-### Install a skill
+Then copy the output into your VS Code `settings.json` (user or workspace):
+
+```jsonc
+"chat.agentSkillsLocations": [
+    "~/workspace/agent-skills-hub/custom",
+    "~/workspace/agent-skills-hub/third-party/anthropic-skills/skills",
+    "~/workspace/agent-skills-hub/third-party/awesome-copilot/skills"
+]
+```
+
+### Update third-party skills
+
+```bash
+make update    # pull latest from upstream
+make catalog   # rebuild the catalog
+# or both at once:
+make refresh
+```
+
+### Browse & install skills
 
 ```bash
 # List all available skills
-./scripts/install-skill.sh --list
+make list
 
 # Install a specific skill to a target directory
-./scripts/install-skill.sh git-commit ~/.config/skills/
+make install SKILL=git-commit TARGET=~/.config/skills/
 ```
 
 ## Adding Custom Skills
@@ -74,7 +107,10 @@ cat catalog.json | python -m json.tool
    cp -r custom/example-skill custom/my-new-skill
    ```
 2. Edit `custom/my-new-skill/SKILL.md` with your skill content
-3. Run `python scripts/build-catalog.py` to update the catalog
+3. Rebuild the catalog:
+   ```bash
+   make catalog
+   ```
 4. Commit and push
 
 See the [skill template](custom/example-skill/SKILL.md) for the expected format.
@@ -83,7 +119,7 @@ See the [skill template](custom/example-skill/SKILL.md) for the expected format.
 
 ```bash
 git submodule add https://github.com/<owner>/<repo>.git third-party/<name>
-python scripts/build-catalog.py
+make catalog
 git add . && git commit -m "feat: add <name> as third-party skill source"
 ```
 
@@ -95,6 +131,8 @@ git add . && git commit -m "feat: add <name> as third-party skill source"
 {
   "version": "1.0",
   "generated_at": "2026-02-24T00:00:00Z",
+  "total_skills": 74,
+  "sources": { "custom": 1, "third-party": 73 },
   "skills": [
     {
       "name": "git-commit",
