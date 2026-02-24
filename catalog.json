@@ -1,9 +1,9 @@
 {
   "version": "1.0",
   "generated_at": "2026-02-24T05:51:40.053962+00:00",
-  "total_skills": 74,
+  "total_skills": 75,
   "sources": {
-    "custom": 1,
+    "custom": 2,
     "third-party": 73
   },
   "duplicates": [
@@ -43,6 +43,15 @@
       "source": "custom",
       "source_type": "custom",
       "path": "custom/example-skill",
+      "has_assets": false,
+      "license": "MIT"
+    },
+    {
+      "name": "grammar-corrector",
+      "description": "A skill to help users correct their English grammar and rewriting sentences more fluently, natural, and friendly. Use this skill whenever the user wants to correct their English grammar or rewrite sentences to be more fluent and natural.",
+      "source": "custom",
+      "source_type": "custom",
+      "path": "custom/grammar-corrector",
       "has_assets": false,
       "license": "MIT"
     },
