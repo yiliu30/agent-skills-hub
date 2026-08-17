@@ -1,9 +1,9 @@
 {
   "version": "1.0",
-  "generated_at": "2026-08-17T01:44:40.348055+00:00",
-  "total_skills": 8,
+  "generated_at": "2026-08-17T01:45:02.371718+00:00",
+  "total_skills": 9,
   "sources": {
-    "repo": 8
+    "repo": 9
   },
   "duplicates": [],
   "skills": [
@@ -76,6 +76,14 @@
       "path": "skills/remote-debug",
       "has_assets": false,
       "license": "MIT"
+    },
+    {
+      "name": "vllm-kernel-trace",
+      "description": "Trace which GPU kernels vLLM dispatches for specific model layers (linear, attention, MoE, norms). Use this skill whenever the user wants to understand what kernel runs under a vLLM model layer, trace the call stack from a quantization config to the actual CUDA kernel, profile a vLLM run and identify bottleneck ops, or understand input/output dtypes and tensor shapes flowing through a layer. Trigger on phrases like 'which kernel', 'trace the call stack', 'what op does vLLM use for', 'profile this model', 'understand the dispatch path', 'what GEMM kernel', 'marlin or cutlass', 'kernel for MXFP4/FP8/AWQ/GPTQ'.",
+      "source": "z2h",
+      "source_type": "repo",
+      "path": "skills/vllm-kernel-trace",
+      "has_assets": false
     }
   ]
 }
