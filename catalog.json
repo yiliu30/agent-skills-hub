@@ -1,9 +1,9 @@
 {
   "version": "1.0",
-  "generated_at": "2026-08-17T01:44:40.348055+00:00",
-  "total_skills": 8,
+  "generated_at": "2026-08-17T01:45:12.366670+00:00",
+  "total_skills": 9,
   "sources": {
-    "repo": 8
+    "repo": 9
   },
   "duplicates": [],
   "skills": [
@@ -42,6 +42,14 @@
       "path": "skills/observe",
       "has_assets": false,
       "license": "MIT"
+    },
+    {
+      "name": "omni-quantized-model-enablement",
+      "description": "Enable and debug AutoRound-quantized diffusion or multimodal models in vLLM-Omni, including checkpoint schema inspection, loader and fused-weight mapping, MXFP8/W4A16 integration, attention and RoPE parity, and deterministic video or audio validation. Use when adding a new model, importing an AutoRound checkpoint, comparing BF16 with a quantized path, or diagnosing black, random, or structurally incorrect Omni outputs.",
+      "source": "z2h",
+      "source_type": "repo",
+      "path": "skills/omni-quantized-model-enablement",
+      "has_assets": true
     },
     {
       "name": "read-arxiv-paper",
