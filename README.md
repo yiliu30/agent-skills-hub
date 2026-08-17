@@ -47,6 +47,7 @@ npx skills add .
 | `example-skill` | Template skill you can copy when creating a new skill. |
 | `find-sth` | Investigates technical questions across code, docs, papers, and other sources, then writes a sourced findings document. |
 | `observe` | Records structured observations from another Claude Code session and bails early when there is nothing meaningful to record. |
+| `profile-cute-xpu` | Profiles CuTe/SYCL*TLA kernels on Intel XPU with unitrace/VTune workflows and maps bottlenecks to Xe tuning knobs. |
 | `real-review` | Fact-checks written content against primary evidence before publishing. |
 | `reduce-model` | Creates a reduced HuggingFace model for faster testing and debugging workflows. |
 

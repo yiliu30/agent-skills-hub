@@ -1,9 +1,9 @@
 {
   "version": "1.0",
-  "generated_at": "2026-08-17T01:45:02.371718+00:00",
-  "total_skills": 9,
+  "generated_at": "2026-08-17T13:40:28.264269+00:00",
+  "total_skills": 10,
   "sources": {
-    "repo": 9
+    "repo": 10
   },
   "duplicates": [],
   "skills": [
@@ -42,6 +42,14 @@
       "path": "skills/observe",
       "has_assets": false,
       "license": "MIT"
+    },
+    {
+      "name": "profile-cute-xpu",
+      "description": "Profile and analyze CuTe/SYCL*TLA kernels on Intel XPU/GPU, especially Intel Xe/BMG/Xe20/Xe35 GEMM-style kernels using CuTe primitives such as XE_DPAS_TT, XE_LOAD_2D, XE_LOAD_2D_VNNI, XE_LOAD_2D_TRANSPOSE, XE_PREFETCH_2D, XE_STORE_2D, TiledMMAHelper, and PipelineStages. Use when Codex needs to build a profiling workflow, run Intel PTI unitrace or VTune, interpret timing or hardware counters, diagnose compute-bound vs bandwidth-bound behavior, tune CuTe tile shapes, subgroup layout, prefetch depth, GRF pressure, SLM use, reorder overhead, 2D block alignment, XMX utilization, or write a profiling report for Intel XPU kernels.",
+      "source": "z2h",
+      "source_type": "repo",
+      "path": "skills/profile-cute-xpu",
+      "has_assets": true
     },
     {
       "name": "read-arxiv-paper",
