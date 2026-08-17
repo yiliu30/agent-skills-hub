@@ -1,9 +1,9 @@
 {
   "version": "1.0",
-  "generated_at": "2026-06-07T04:33:46.983948+00:00",
-  "total_skills": 7,
+  "generated_at": "2026-06-07T04:34:55.424580+00:00",
+  "total_skills": 8,
   "sources": {
-    "repo": 7
+    "repo": 8
   },
   "duplicates": [],
   "skills": [
@@ -40,6 +40,15 @@
       "source": "z2h",
       "source_type": "repo",
       "path": "skills/observe",
+      "has_assets": false,
+      "license": "MIT"
+    },
+    {
+      "name": "read-arxiv-paper",
+      "description": "Given an arxiv URL, download the TeX source, read the paper, and produce a summary markdown file",
+      "source": "z2h",
+      "source_type": "repo",
+      "path": "skills/read-arxiv-paper",
       "has_assets": false,
       "license": "MIT"
     },
