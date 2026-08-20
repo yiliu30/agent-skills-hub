@@ -49,6 +49,7 @@ npx skills add .
 | `observe` | Records structured observations from another Claude Code session and bails early when there is nothing meaningful to record. |
 | `real-review` | Fact-checks written content against primary evidence before publishing. |
 | `reduce-model` | Creates a reduced HuggingFace model for faster testing and debugging workflows. |
+| `intel-xpu-cute-accuracy-debug` | Debugs numerical mismatches in Intel XPU CuTe/CUTLASS kernels, including Xe DPAS/BDPAS layouts and fused accumulators. |
 
 ## Local Commands
 
