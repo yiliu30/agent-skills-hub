@@ -1,0 +1,4 @@
+interface:
+  display_name: "Omni Quantized Model Enablement"
+  short_description: "Enable AutoRound models in vLLM-Omni"
+  default_prompt: "Use $omni-quantized-model-enablement to enable and validate this AutoRound checkpoint in vLLM-Omni."

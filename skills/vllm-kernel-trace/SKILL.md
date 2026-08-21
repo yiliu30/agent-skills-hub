@@ -160,7 +160,7 @@ Write a markdown file with:
 
 For attention:
 - Flash Attention → `flash_attn` ops
-- FlashInfer → `flashinfer` ops  
+- FlashInfer → `flashinfer` ops
 - Paged Attention → `ops.paged_attention_v1/v2`
 
 For MoE:
