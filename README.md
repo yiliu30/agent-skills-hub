@@ -50,6 +50,7 @@ npx skills add .
 | `profile-cute-xpu` | Profiles CuTe/SYCL*TLA kernels on Intel XPU with unitrace/VTune workflows and maps bottlenecks to Xe tuning knobs. |
 | `real-review` | Fact-checks written content against primary evidence before publishing. |
 | `reduce-model` | Creates a reduced HuggingFace model for faster testing and debugging workflows. |
+| `intel-xpu-cute-accuracy-debug` | Debugs numerical mismatches in Intel XPU CuTe/CUTLASS kernels, including Xe DPAS/BDPAS layouts and fused accumulators. |
 
 ## Local Commands
 

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Intel XPU CuTe Accuracy Debug"
+  short_description: "Debug CuTe/Xe kernel numerical accuracy"
+  default_prompt: "Use $intel-xpu-cute-accuracy-debug to investigate this Intel XPU CuTe kernel accuracy mismatch."

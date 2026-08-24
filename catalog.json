@@ -35,6 +35,14 @@
       "license": "MIT"
     },
     {
+      "name": "intel-xpu-cute-accuracy-debug",
+      "description": "Debug numerical mismatches in Intel XPU CuTe/CUTLASS kernels, especially Xe DPAS/BDPAS fragment layouts, block-scale payloads, and fused SDPA/GEMM accumulators.",
+      "source": "z2h",
+      "source_type": "repo",
+      "path": "skills/intel-xpu-cute-accuracy-debug",
+      "has_assets": true
+    },
+    {
       "name": "observe",
       "description": "Memory observer agent for recording structured observations from primary Claude Code sessions. Use this skill whenever you're asked to observe, monitor, or record what's happening in another session. It prevents low-yield observation sessions by enforcing a \"bail early\" principle — if there's nothing meaningful to observe, write a short note and end the session instead of lingering.",
       "source": "z2h",
