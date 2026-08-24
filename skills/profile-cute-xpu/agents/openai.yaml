@@ -1,0 +1,4 @@
+interface:
+  display_name: "Profile CuTe XPU"
+  short_description: "Profile CuTe kernels on Intel XPU"
+  default_prompt: "Use $profile-cute-xpu to profile this CuTe kernel on Intel XPU and explain the bottleneck."
