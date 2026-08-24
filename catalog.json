@@ -1,9 +1,9 @@
 {
   "version": "1.0",
-  "generated_at": "2026-08-17T01:45:02.371718+00:00",
-  "total_skills": 9,
+  "generated_at": "2026-08-20T14:45:53.207490+00:00",
+  "total_skills": 10,
   "sources": {
-    "repo": 9
+    "repo": 10
   },
   "duplicates": [],
   "skills": [
@@ -33,6 +33,14 @@
       "path": "skills/find-sth",
       "has_assets": false,
       "license": "MIT"
+    },
+    {
+      "name": "intel-xpu-cute-accuracy-debug",
+      "description": "Debug numerical mismatches in Intel XPU CuTe/CUTLASS kernels, especially Xe DPAS/BDPAS fragment layouts, block-scale payloads, and fused SDPA/GEMM accumulators.",
+      "source": "z2h",
+      "source_type": "repo",
+      "path": "skills/intel-xpu-cute-accuracy-debug",
+      "has_assets": true
     },
     {
       "name": "observe",
